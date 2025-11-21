@@ -260,3 +260,31 @@ function simulateArrival(){
 
 // initial header update
 updateHeader();
+
+// Back button logic: navigate to previous step in the defined order
+const stepOrder = ['step-plate','step-car','step-choice','step-maintenance','step-service','step-map'];
+function goToStep(stepId){
+  const steps = document.querySelectorAll('.step');
+  steps.forEach(s=>s.classList.remove('active'));
+  const target = document.getElementById(stepId);
+  if(target) target.classList.add('active');
+  updateHeader();
+}
+
+document.querySelectorAll('.back-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    // find current active step
+    let currentIndex = -1;
+    for(let i=0;i<stepOrder.length;i++){
+      const el = document.getElementById(stepOrder[i]);
+      if(el && el.classList.contains('active')){ currentIndex = i; break; }
+    }
+    if(currentIndex<=0){
+      // already at first step -> do nothing
+      return;
+    }
+    // go to previous step
+    const prev = stepOrder[currentIndex-1];
+    goToStep(prev);
+  });
+});

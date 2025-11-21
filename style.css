@@ -63,6 +63,19 @@ input{width:100%;padding:12px;margin-top:6px;border-radius:12px;border:1px solid
 body{padding-top:84px;padding-bottom:64px}
 .primary-btn:hover{opacity:0.9;transform:scale(1.03);}
 
+/* Back button (secondary) */
+.back-btn{
+  background:transparent;
+  color:var(--eni-gradient-end);
+  border:1px solid rgba(0,0,0,0.08);
+  padding:8px 12px;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:700;
+  margin-bottom:10px;
+}
+.back-btn:hover{background:rgba(0,0,0,0.03)}
+
 .step{display:none;margin-top:20px;}
 .step.active{display:block;}
 
