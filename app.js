@@ -1,5 +1,5 @@
 const SERVICES = [
-  {id:'carro',label:'Incidente'},
+  {id:'carro',label:'Soccorso stradale'},
   {id:'benz',label:'Rifornimento'},
   {id:'ruote',label:'Cambio ruota'},
   {id:'vetri',label:'Vetri/inf.'},
@@ -288,3 +288,4 @@ document.querySelectorAll('.back-btn').forEach(btn=>{
     goToStep(prev);
   });
 });
+
