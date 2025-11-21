@@ -1,0 +1,226 @@
+:root{
+  --eni-gradient-start: #008280;
+  --eni-gradient-end: #0075a1;
+  --eni-danger-start: #d9534f;
+  --eni-danger-end: #c12b2b;
+  --bg:#f8fafb;
+  --card:#fff;
+  --radius:16px;
+  --muted:#5b6b73;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif}
+body{background:var(--bg);color:var(--eni-gradient-end);padding:20px;}
+.container{max-width:500px;margin:0 auto;}
+h1{margin-bottom:24px;text-align:center;}
+label{display:block;margin-top:12px;font-weight:600;}
+input{width:100%;padding:12px;margin-top:6px;border-radius:12px;border:1px solid #ccc;font-size:15px;}
+
+.primary-btn{
+  background: linear-gradient(90deg, var(--eni-gradient-start), var(--eni-gradient-end));
+  color:white;
+  border:none;
+  padding:12px 20px;
+  margin-top:16px;
+  border-radius:16px;
+  font-weight:700;
+  font-size:16px;
+  cursor:pointer;
+  transition: transform 0.1s, opacity 0.2s;
+}
+
+/* Header and footer */
+#app-header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:64px;
+  background: linear-gradient(90deg, var(--eni-gradient-start), var(--eni-gradient-end));
+  color:#fff;
+  display:flex;
+  align-items:center;
+  z-index:1000;
+}
+#app-header .header-inner{padding:0 20px;display:flex;align-items:center}
+#header-step{font-weight:700}
+
+#app-footer{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:44px;
+  background: linear-gradient(90deg, var(--eni-gradient-start), var(--eni-gradient-end));
+  color:#fff;
+  display:flex;
+  align-items:center;
+  z-index:900;
+}
+#app-footer .footer-inner{padding:0 20px}
+
+/* make room for header/footer */
+body{padding-top:84px;padding-bottom:64px}
+.primary-btn:hover{opacity:0.9;transform:scale(1.03);}
+
+.step{display:none;margin-top:20px;}
+.step.active{display:block;}
+
+.service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));grid-auto-rows:120px;gap:12px;margin-top:12px;}
+.service-btn{
+  background: linear-gradient(135deg, var(--eni-gradient-start), var(--eni-gradient-end));
+  color:white;
+  border:none;
+  padding:0;
+  border-radius:16px;
+  font-weight:700;
+  cursor:pointer;
+  text-align:center;
+  transition: transform 0.1s, box-shadow 0.2s;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  height:100%;
+  width:100%;
+}
+.service-btn:hover{
+  transform:scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* Incidente button: span two columns and use danger gradient */
+.service-btn.incidente{
+  grid-column: span 2;
+  background: linear-gradient(135deg, var(--eni-danger-start), var(--eni-danger-end));
+  color: #fff;
+}
+
+.service-icon svg{width:40px;height:40px;display:block;fill:currentColor}
+.service-label{font-size:14px;padding:0 6px;}
+
+/* When using local image files for icons */
+.service-icon img{width:60px;height:60px;display:block;object-fit:contain}
+
+/* Choice screen */
+.choice-grid{display:flex;gap:12px;justify-content:space-between;margin-top:12px}
+.choice-btn{
+  flex:1;
+  background: linear-gradient(135deg, var(--eni-gradient-start), var(--eni-gradient-end));
+  color:#fff;
+  border:none;
+  border-radius:12px;
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  cursor:pointer;
+}
+.choice-btn .choice-icon{width:60px;height:60px;object-fit:contain}
+.choice-btn span{font-weight:700}
+
+/* Maintenance form */
+.maintenance-form{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+.maintenance-form input{padding:10px;border-radius:10px;border:1px solid #ccc}
+
+/* Make maintenance submit button full-width and centered text */
+.maintenance-form .primary-btn{width:100%;display:block;text-align:center;padding:12px;border-radius:12px}
+.maintenance-form textarea{padding:10px;border-radius:10px;border:1px solid #ccc;resize:vertical}
+
+@media (max-width:520px){
+  .choice-grid{flex-direction:column}
+}
+
+/* Map mockup and CID upload */
+.map{width:100%;height:260px;border-radius:12px;background:linear-gradient(180deg,#e6eef1,#d9e8eb);position:relative;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,0.6)}
+.marker{width:18px;height:18px;border-radius:50%;position:absolute;transform:translate(-50%,-50%);}
+.marker.user{left:30%;top:60%;background:#0b5fa5;border:3px solid #fff}
+.marker.truck{left:80%;top:20%;background:#ff6b6b;border:3px solid #fff}
+.marker.truck.animate{animation:truck-move 4s linear forwards}
+@keyframes truck-move{from{left:80%;top:20%}to{left:52%;top:52%}}
+.cid-section{margin-top:12px}
+.cid-upload{display:flex;gap:8px;align-items:center}
+.cid-upload input{flex:1;padding:8px;border-radius:8px;border:1px solid #ccc}
+.cid-upload button{white-space:nowrap}
+/* alternative contact mail under CID upload */
+.cid-alt{margin-top:8px;font-size:14px;color:var(--muted)}
+.cid-alt a{color:var(--eni-gradient-end);font-weight:700;text-decoration:none}
+.cid-alt a:hover{text-decoration:underline;opacity:0.95}
+
+.modal{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.3);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.modal.hidden{display:none;}
+.modal-content{
+  background:var(--card);
+  padding:24px;
+  border-radius:20px;
+  width:90%;
+  max-width:400px;
+  text-align:center;
+  position:relative;
+}
+
+.progress{
+  width:100%;
+  height:12px;
+  background:#eee;
+  border-radius:12px;
+  margin:12px 0;
+}
+#progress-bar{
+  height:100%;
+  width:0%;
+  background: linear-gradient(90deg, var(--eni-gradient-start), var(--eni-gradient-end));
+  border-radius:12px;
+}
+
+/* Plate input custom styles */
+.plate-wrapper{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border:2px solid #000;
+  border-radius:10px;
+  padding:8px 10px;
+  background:var(--card);
+  max-width:360px;
+  margin-top:8px;
+}
+.plate-flag{
+  width:56px;
+  background:#0b5fa5;
+  color:#fff;
+  border-radius:8px;
+  padding:6px 4px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+}
+.plate-flag .eu{font-size:11px;opacity:0.95}
+.plate-flag .it{font-size:14px;margin-top:4px}
+.plate-wrapper input{border:none;padding:6px 0;margin:0;font-size:20px;letter-spacing:6px;text-transform:uppercase;background:transparent;width:100%;}
+.plate-wrapper input:focus{outline:none}
+.plate-caption{text-align:center;margin-top:6px;color:var(--muted);font-size:13px}
+
+/* Center the plate step button */
+#btn-plate{display:block;margin:14px auto 0;padding-left:28px;padding-right:28px}
+#service-select-label{
+  display:block;
+  margin:14px auto 0;
+  padding:0;
+  text-align:center;
+  font-weight:700;
+}

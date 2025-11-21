@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EniLive — Prototipo Intervento</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- SVG sprite moved to external file: assets/icons/icons.svg -->
+  <header id="app-header">
+    <div class="header-inner container">
+      <div id="header-step">Passaggio 1 di 5 — Targa</div>
+    </div>
+  </header>
+  <div class="container">
+    <h1>Enilive<br>Richiesta Intervento</h1>
+
+    <!-- STEP 1: Targa -->
+    <div id="step-plate" class="step active">
+      <label>Targa:</label>
+      <div class="plate-wrapper">
+        <div class="plate-flag" aria-hidden="true">
+          <div class="eu">EU</div>
+          <div class="it">IT</div>
+        </div>
+        <input type="text" id="plate" placeholder="AB123CD" maxlength="7" inputmode="text" aria-label="Targa">
+      </div>
+      <div class="plate-caption">Inserisci qui la tua targa ↑</div>
+      <button id="btn-plate" class="primary-btn">Continua</button>
+    </div>
+
+    <!-- STEP 2: Dati Macchina -->
+    <div id="step-car" class="step">
+      <label>Modello:</label>
+      <input type="text" id="car-model" placeholder="Es. Fiat 500">
+      <label>Anno:</label>
+      <input type="number" id="car-year" placeholder="2023">
+      <label>Colore:</label>
+      <input type="text" id="car-color" placeholder="Rosso">
+      <button id="btn-car" class="primary-btn">Avanti</button>
+    </div>
+
+    <!-- STEP 2.5: Scelta tra Sinistro / Programma Manutenzione -->
+    <div id="step-choice" class="step">
+      <h2>Seleziona un'opzione</h2>
+      <div class="choice-grid">
+        <button id="btn-sinistro" class="choice-btn">
+          <img src="assets/icons/sinistro.png" alt="Sinistro" class="choice-icon">
+          <span>Sinistro</span>
+        </button>
+        <button id="btn-manutenzione" class="choice-btn">
+          <img src="assets/icons/manutenzione.png" alt="Programma la tua manutenzione" class="choice-icon">
+          <span>Programma la tua manutenzione</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 2.6: Form per programmare manutenzione -->
+    <div id="step-maintenance" class="step">
+      <h2>Programma la tua manutenzione</h2>
+      <form id="maintenance-form" class="maintenance-form">
+        <label>Nome</label>
+        <input type="text" id="mnt-name" required>
+        <label>Cognome</label>
+        <input type="text" id="mnt-surname" required>
+        <label>Email</label>
+        <input type="email" id="mnt-email" required>
+        <label>Cellulare</label>
+        <input type="tel" id="mnt-phone" required>
+        <label>Note (descrizione del danno)</label>
+        <textarea id="mnt-notes" rows="4" placeholder="Descrivi il danno..."></textarea>
+        <div style="margin-top:12px">
+          <button type="submit" id="btn-mnt-submit" class="primary-btn">Invia richiesta</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- STEP 3: Servizio -->
+    <div id="step-service" class="step">
+      <h2 id="service-select-label">Seleziona il servizio</h2>
+      <div id="service-grid" class="service-grid"></div>
+    </div>
+
+    <!-- STEP: Map after Sinistro -->
+    <div id="step-map" class="step">
+      <h2>Posizione intervento</h2>
+      <div class="map">
+        <div class="marker user" title="La tua posizione"></div>
+        <div class="marker truck" title="Carro soccorso"></div>
+      </div>
+      <div class="cid-section">
+        <label>Carica qui il CID</label>
+        <div class="cid-upload">
+          <input type="file" id="cid-file" accept="image/*,application/pdf">
+          <button id="btn-cid-upload" class="primary-btn">Carica CID</button>
+        </div>
+        <p id="cid-status" style="margin-top:8px;color:var(--muted)"></p>
+        <p class="cid-alt" style="margin-top:8px;font-size:14px;color:var(--muted);">oppure manda la mail entro 48 ore a <a href="mailto:sinistri@realemutua.com">sinistri@realemutua.com</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <h3 id="modal-title">Intervento in corso</h3>
+      <p id="modal-body">Geolocalizzazione...</p>
+      <div class="progress">
+        <div id="progress-bar"></div>
+      </div>
+      <p id="eta">ETA — calcolo in corso</p>
+      <button id="modal-close" class="primary-btn">Chiudi</button>
+    </div>
+  </div>
+
+  <footer id="app-footer">
+    <div class="footer-inner container">Enilive</div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
